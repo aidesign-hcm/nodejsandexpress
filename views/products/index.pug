@@ -1,0 +1,41 @@
+extends ../layout/common
+block content
+    //- nav.navbar.navbar-light.bg-light.justify-content-between
+    //-     a.navbar-brand Navbar
+    //-     form.form-inline
+    //-         input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')
+    //-         button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+    .container
+        .row.mt-4
+            each product in products
+                .col-md-3
+                    .card
+                        .card-body
+                            img.card-img-top(src= product.image)
+                            .card-text
+                                h3= product.name
+                                p= product.desc
+                                a.btn.btn-primary(href='/cart/add/' + product.id) Primary
+        nav(aria-label='Page navigation example')
+            ul.pagination
+                if(n==1)
+                    li.page-item.disabled
+                        a.page-link(href="?page=1") Start
+                else
+                    li.page-item
+                        a.page-link(href="?page=1") Start
+                if(n>1)
+                    li.page-item
+                        a.page-link(href="?page="+(n-1))=n-1
+                li.page-item
+                    a.page-link(href="?page="+n)=n
+                if(n<total)
+                    li.page-item
+                        a.page-link(href="?page="+(n+1))=n+1
+                if(n>=total)
+                    li.page-item.disabled
+                        a.page-link(href="?page="+ total) End
+                else
+                    li.page-item
+                        a.page-link(href="?page="+ total) End
+                

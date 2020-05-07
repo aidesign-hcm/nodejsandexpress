@@ -1,0 +1,19 @@
+extends ../layout/common 
+block content
+  h3.mt-2 User List
+  .d-flex.mb-4
+    a.btn.btn-primary(href="/users/create") create
+    form.ml-auto.d-flex.mb-0(action="/users/search", method="GET")
+        input(type="text" name="q" value=query class="form-control")
+        button.btn.btn-secondary.ml-2 Search
+  table.table
+    tr
+      th Name
+      th Phone
+      th Email
+    each user in users
+      tr
+        td 
+          a(href='/users/' + user.id)= user.name
+        td= user.phone
+        td= user.email

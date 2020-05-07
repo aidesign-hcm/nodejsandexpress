@@ -1,0 +1,18 @@
+extends ../layout/common 
+block content
+    .card.mt-4.mx-auto(style="width: 22rem;")
+        .card-body
+            .card-title.mt-2 Login
+            .card-text
+                if errors
+                    each e in errors
+                        .alert.alert-danger= e
+                form(method="POST")
+                    .form-group
+                        label Email
+                        input.form-control(type="email" name="email" value= values ? values.email : "")
+                    .form-group
+                        label Password
+                        input.form-control(type="password" name="password" value= values ? values.password : "")
+                    button.btn.btn-primary(type="submit") Login
+                
